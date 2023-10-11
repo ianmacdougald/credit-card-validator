@@ -5,6 +5,10 @@
   justify-content: space-evenly;
 }
 
+.card-name-num {
+  margin-bottom: 1.5em;
+}
+
 .credit-card {
   /* border: 1px solid red; */
   display: 'flex';
