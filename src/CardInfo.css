@@ -1,0 +1,30 @@
+.card-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.credit-card {
+  /* border: 1px solid red; */
+  display: 'flex';
+  flex-direction: 'column';
+  float: left;
+  text-align: left;
+  width: 400px;
+}
+
+.credit-card div.card-name-num .card-form-item {
+  width: 100%;
+}
+
+.exp-cvv {
+  display: 'flex';
+  flex-direction: 'row';
+}
+
+#card-submit {
+  position: relative;
+  margin-top: 1em;
+  width: 30%;
+}
