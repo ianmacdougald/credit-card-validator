@@ -2,8 +2,10 @@
   "name": "engaged-md-takehome",
   "private": true,
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "dev": "nodemon server/server.ts & vite",
+    "start:dev-server": "nodemon -I --exec node --loader ts-node/esm ./server/server.ts",
+    "dev": "npm run start:dev-server & vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
@@ -20,6 +22,7 @@
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.14.13",
     "@types/express": "^4.17.19",
+    "@types/node": "^20.8.4",
     "@types/react": "^18.2.28",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
