@@ -1,4 +1,4 @@
-import CardInfo from './CardInfo';
+import CardInfo from './components/CardInfo';
 import './App.css';
 
 export default function App() {
