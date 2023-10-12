@@ -35,12 +35,12 @@ const luhnChecksum = (input: string): number => {
     // Update the current step value
     mult2 = (mult2 + 1) % 2;
   }
-  // Test if the result is a multiple of 10; return if it is
-  if (result % 10 == 0) return 0;
+  // Test if the result is a multiple of 10; return 10 to indicate succcess
+  if (result % 10 == 0) return 10;
   // If it's not, backtrack to the second to last digit in the string
   result -= +input[input.length - 1];
   // Identify the closet distance to the next multiple of 10 and return
-  return 10 - (result % 10);
+  return result % 10 != 0 ? 10 - (result % 10) : 0;
 };
 
 // Takes a credit card string value and returns true on valid number
@@ -54,7 +54,7 @@ app.post('/api/validate', (req: Request, res: Response, next: NextFunction) => {
         .status(400)
         .json({ result: 'Error: Invalid character(s) detected' });
     // A result of 0 indicates a valid answer
-    else if (luhnResult === 0)
+    else if (luhnResult === 10)
       return res.status(200).json({ result: 'Card accepted' });
     // Otherwise, the checksum failed but we return the number that would next validate it
     else
