@@ -20,9 +20,9 @@ const luhnChecksum = (input: string): number => {
   let mult2: number = 0;
   // Moving backwards through the number
   for (let i = input.length - 1; i >= 0; i--) {
-    // Assuming each character corresponds to a number (otherwise, return false)
-    let current = JSON.parse(input[i]);
-    if (typeof current != 'number') return -1;
+    // Test the validity of each character (return -1 if invalid character detected)
+    let current = parseInt(input[i]);
+    if (isNaN(current)) return -1;
     // If on an even step (i.e. on the 'every other' step)
     if (mult2) {
       // multiply the current value by 2
@@ -63,7 +63,7 @@ app.post('/api/validate', (req: Request, res: Response, next: NextFunction) => {
         .json({ result: 'Change last digit to ' + luhnResult });
   } catch (e) {
     return next({
-      log: "Error in '/validate: " + e,
+      log: "Error in '/validate': " + e,
       status: 500,
       message: { err: e },
     });
